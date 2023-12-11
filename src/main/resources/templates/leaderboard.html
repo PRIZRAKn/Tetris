@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица результатов</title>
+    <link rel="stylesheet" href="./css/leaderborboard.css">
+</head>
+<body>
+    <h1>Таблица результатов</h1>
+    <table>
+        <tr>
+            <th>Место</th>
+            <th>Имя игрока</th>
+            <th>Лучший результат</th>
+        </tr>
+        <tr th:each="score, index : ${scores}">
+            <td th:text="${index.index + 1}"></td>
+            <td th:text="${score.user.name}"></td>
+            <td th:text="${score.score}"></td>
+        </tr>
+    </table>
+</body>
+</html>

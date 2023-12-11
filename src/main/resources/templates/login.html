@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Добро пожаловать | Tetris</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+<h1>Please Log In</h1>
+<div th:if="${param.error}">
+    Invalid email and password.</div>
+<div th:if="${param.logout}">
+    You have been logged out.</div>
+
+<form action="/login" method="post">
+    <div>
+        <input type="text" name="username" placeholder="Email"/>
+    </div>
+    <br>
+    <div>
+        <input type="password" name="password" placeholder="Password"/>
+    </div>
+    <br>
+    <input class="submit" type="submit" value="Log in"/>
+    <div class="url"><a href="/auth">Go to Auth</a></div>
+</form>
+
+</body>
+</html>

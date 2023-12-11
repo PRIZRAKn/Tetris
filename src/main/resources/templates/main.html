@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" type="text/css" href="./css/home.css">
+</head>
+<body>
+  <h1 th:text="|Welcome ${name} to the Game Menu|"></h1>
+  <div class="button-container">
+    <a href="/single-player" class="button">Одиночная игра</a>
+    <a href="/online-game" class="button">Онлайн игра</a>
+    <a href="/leaderboard" class="button">Таблица результатов</a>
+  </div>
+</body>
+<!-- Подключение SockJS и Stomp в вашем HTML -->
+<script src="./js/sockjs.min.js"></script>
+<script src="./js/webstomp.min.js"></script>
+
+<script src="./js/main.js"></script>
+</html>

@@ -1,0 +1,36 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="./css/login.css">
+</head>
+<body>
+
+    <h1>Registration</h1>
+    <div th:if="${param.error}">
+        Invalid form.</div>
+    <form action="/auth" method="post">
+        <div class="text-field">
+            <label class="text-field__label" for="email"> Email </label>
+            <input class="text-field__input" type="email" name="email" id="email"/>
+        </div>
+        <div class="text-field">
+            <label class="text-field__label"> Пароль </label>
+            <input class="text-field__input" type="password" name="password"/>
+        </div>
+        <div class="text-field">
+            <label class="text-field__label"> Повторите пароль </label>
+            <input class="text-field__input" type="password" name="copypassword"/>
+        </div>
+        <div class="text-field">
+            <label class="text-field__label" for="name"> Если хотите введите ник </label>
+            <input class="text-field__input" type="text" name="name" id="name"/>
+        </div>
+        <div><input type="submit" class="submit" value="Sign In"/></div>
+        <div class="url"><a href="/login">Go to Login</a></div>
+    </form>
+
+</body>
+</html>

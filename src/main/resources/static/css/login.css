@@ -1,0 +1,63 @@
+/* login.css */
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.submit {
+    font-size: 16px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Add style for the link similar to the "Login" button */
+a {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin: 0 auto;
+    font-size: 12px;
+}
+
+a:hover {
+    background-color: #45a049;
+}
+
+.url {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
