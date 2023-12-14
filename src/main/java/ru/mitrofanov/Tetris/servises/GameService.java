@@ -23,4 +23,7 @@ public class GameService {
         creator = null;
         return temp.toString();
     }
+//    synchronized public String GamePanel(){
+//        console.log()
+//    }
 }

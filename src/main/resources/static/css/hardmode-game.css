@@ -16,14 +16,16 @@ body {
     color: white;
 }
 
-#root canvas {
-    display: block;
-    margin: 0 auto;
+canvas {
+    position: absolute;
+    top: 80px;
 }
 
-#second {
-    position: absolute;
-    top: 100px;
+#root canvas {
+    right: 100px;
+}
+
+#second canvas {
     left: 100px;
 }
 

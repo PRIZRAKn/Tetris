@@ -9,15 +9,10 @@ export default class View{
         '7': 'red'
     };
 
-    constructor (element, width, height, rows, columns, second = false, callBack){
+    constructor (element, width, height, rows, columns){
         this.element = element;
         this.width = width;
         this.height = height;
-
-        this.second = second;
-        if (!second) {
-            this.callBack = callBack;
-        }
 
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.width;
@@ -27,7 +22,7 @@ export default class View{
         this.playfieldBorderWidth = 4; //описание ирового поля
         this.playfieldX = this.playfieldBorderWidth;
         this.playfieldY = this.playfieldBorderWidth;
-        this.playfieldWidth = this.width * 2 / 3 - 20;
+        this.playfieldWidth = this.width * 2 / 3;
         this.playfieldHeight = this.height;
         this.playfieldInnerWidth = this.playfieldWidth - this.playfieldBorderWidth * 2;
         this.playfieldInnerHeight = this.playfieldHeight - this.playfieldBorderWidth * 2;
@@ -45,9 +40,6 @@ export default class View{
 
 
     renderMainScreen(state){ //отрисовка
-        if (!this.second) {
-            this.callBack(state);
-        }
         this.clearScreen();
         this.renderActiveCoordinates(state);
         this.renderPlayfield(state);
@@ -105,6 +97,7 @@ export default class View{
                 }
             }
         }
+        
 
         this.context.strokeStyle = 'white'; //
         this.context.lineWidth = this.playfieldBorderWidth;//
@@ -116,11 +109,7 @@ export default class View{
         this.context.textAlign = 'start';
         this.context.textBaseline = 'top';
         this.context.fillStyle = 'white';
-        if (this.second) {
-            this.context.font = '8px "Press Start 2P"';
-        } else {
-            this.context.font = '14px "Press Start 2P"';
-        }
+        this.context.font = '14px "Press Start 2P"';
     
         this.context.fillText(`Score: ${score}`, this.panelX, this.panelY + 0);
         this.context.fillText(`Lines: ${lines}`, this.panelX, this.panelY + 24);
@@ -163,7 +152,7 @@ export default class View{
 
     renderActiveCoordinates(state) {
         const activeCoordinates = this.getActiveCoordinates(state);
-
+    
         activeCoordinates.forEach(coord => {
             this.renderBlock(
                 coord.x * this.blockWidth,
@@ -174,7 +163,7 @@ export default class View{
             );
         });
     }
-
+    
     renderBlock (x, y, width, height, color) {
         this.context.fillStyle = color;
         this.context.strokeStyle = 'black'

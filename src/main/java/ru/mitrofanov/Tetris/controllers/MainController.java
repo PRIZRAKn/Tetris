@@ -27,4 +27,10 @@ public class MainController {
         model.addAttribute("myId", userService.getUser(principal.getName()).getId());
         return "game-online";
     }
+
+    @GetMapping("/hardmode-game")
+    public String getHardPage(Principal principal, Model model) {
+        model.addAttribute("myId", userService.getUser(principal.getName()).getId());
+        return "hardmode-game";
+    }
 }

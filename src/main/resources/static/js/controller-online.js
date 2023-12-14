@@ -1,15 +1,18 @@
 export default class Controller{
-    constructor(game, view){
+    constructor(game, view, secondPlayer = false){
         this.game = game;
         this.view = view;
         this.intervalId = null;
         this.isPlaying = false;
 
-        
-        document.addEventListener('keydown', this.handleKeyDown.bind(this));
-        document.addEventListener('keyup', this.handleKeyUp.bind(this));
-
-        this.view.renderStartScreen();
+        if (secondPlayer) {
+            this.isPlaying = true;
+            this.updateView();
+        } else {
+            document.addEventListener('keydown', this.handleKeyDown.bind(this));
+            document.addEventListener('keyup', this.handleKeyUp.bind(this));
+            this.view.renderStartScreen();
+        }
     }
 
     update(){
@@ -53,42 +56,10 @@ export default class Controller{
             var xhr = new XMLHttpRequest();
 
             // Настройка запроса
-            xhr.open("POST", "http://localhost:8081/game-over", true);
-            /*xhr.onreadystatechange = function() {
-              if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                  // Запрос выполнен успешно
-                  var response = xhr.responseText;
-                  console.log("Ответ сервера:", response);
-                } else {
-                  // Произошла ошибка при выполнении запроса
-                  console.error("Ошибка:", xhr.status);
-                }
-              }
-            };*/
+            xhr.open("POST", "http://localhost:3000/game-over", true);
+
             xhr.send(formData);
 
-
-            /*const response = await fetch('/game-over', {
-                method: 'POST',
-                //body: JSON.stringify({"score": score}),
-                body: formData,
-            });*/
-
-            //const data = await response.json();
-
-            /*if (data.success) {
-                console.log('Результаты успешно отправлены на сервер.');
-                
-                // Получите обновленные данные таблицы лидеров
-                const leaderboardResponse = await fetch('/leaderboard');
-                const leaderboardData = await leaderboardResponse.json();
-
-                // Обновите отображение таблицы лидеров
-                this.view.updateLeaderboard(leaderboardData);
-            } else {
-                console.error('Ошибка при отправке результатов.');
-            }*/
         } catch (error) {
             console.error('Ошибка при отправке результатов:', error);
         }
@@ -113,13 +84,6 @@ export default class Controller{
 
     handleKeyDown(event){
         switch (event.keyCode){
-            // case 13: //ENTER
-            //     if (this.isPlaying){
-            //         this.pause();
-            //     } else{
-            //         this.play();
-            //     }
-            //     break;
             case 37: //Left arrow
                 this.game.movePieceLeft();
                 this.updateView();

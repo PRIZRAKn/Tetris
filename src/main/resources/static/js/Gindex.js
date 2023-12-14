@@ -1,6 +1,6 @@
-import Game from './game-online.js';
-import View from './view-online.js';
-import Controller from './controller-online.js';
+import Game from './game.js';
+import View from './view.js';
+import Controller from './controller.js';
 
 const root = document.querySelector('#root');
 

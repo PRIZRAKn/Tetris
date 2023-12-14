@@ -256,6 +256,7 @@ export default class Game {
     }
 
     updateScore (clearedLines){
+        console.log(this.level)
         if (clearedLines > 0) {
             this.score += Game.points[clearedLines] * (this.level + 1); //добавление очков и уровня
             this.lines += clearedLines;
